@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Владелец телефона</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<main class="card">
+    <p class="eyebrow" th:text="'Запись № ' + ${owner.id}">Запись</p>
+    <h1 th:text="${owner.surname + ' ' + owner.name + ' ' + owner.patronymic}">Иванов Иван Иванович</h1>
+    <dl class="details">
+        <div><dt>Телефон</dt><dd th:text="${owner.phone}">+7 900 000-00-00</dd></div>
+        <div><dt>Почтовый индекс</dt><dd th:text="${owner.postalCode}">123456</dd></div>
+        <div><dt>Страна</dt><dd th:text="${owner.country}">Россия</dd></div>
+        <div><dt>Область</dt><dd th:text="${owner.region}">Московская</dd></div>
+        <div><dt>Район</dt><dd th:text="${owner.district}">Центральный</dd></div>
+        <div><dt>Город</dt><dd th:text="${owner.city}">Москва</dd></div>
+        <div><dt>Улица</dt><dd th:text="${owner.street}">Ленина</dd></div>
+        <div><dt>Дом</dt><dd th:text="${owner.house}">10</dd></div>
+        <div><dt>Квартира</dt><dd th:text="${owner.apartment}">5</dd></div>
+    </dl>
+    <div class="actions">
+        <a class="button" th:href="@{/owners/{id}/edit(id=${owner.id})}">Редактировать</a>
+        <form th:action="@{/owners/{id}/delete(id=${owner.id})}" method="post">
+            <button class="danger" type="submit">Удалить</button>
+        </form>
+        <a class="text-link" th:href="@{/owners}">К списку</a>
+    </div>
+</main>
+</body>
+</html>

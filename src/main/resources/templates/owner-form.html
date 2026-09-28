@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Новый владелец</title></head>
+<head><meta charset="UTF-8"><title>Владелец телефона</title></head>
 <body>
-<h1>Добавить владельца телефона</h1>
-<form th:action="@{/owners}" th:object="${owner}" method="post">
+<h1 th:text="${owner.id == null ? 'Новый владелец' : 'Редактирование владельца'}">Владелец</h1>
+<form th:action="${owner.id == null} ? @{/owners} : @{/owners/{id}(id=${owner.id})}" th:object="${owner}" method="post">
     <label>Фамилия<input th:field="*{surname}" required></label>
     <label>Имя<input th:field="*{name}" required></label>
     <label>Отчество<input th:field="*{patronymic}" required></label>

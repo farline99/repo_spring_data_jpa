@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Владельцы телефонов</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Владельцы телефонов</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
 <body>
-<h1>Владельцы телефонов</h1>
-<a th:href="@{/owners/new}">Добавить владельца</a>
-<p th:if="${!owners.iterator().hasNext()}">Записей пока нет.</p>
-<table th:if="${owners.iterator().hasNext()}">
-    <thead><tr><th>ID</th><th>ФИО</th><th>Город</th><th>Телефон</th></tr></thead>
-    <tbody><tr th:each="owner : ${owners}">
-        <td th:text="${owner.id}">1</td>
-        <td th:text="${owner.surname + ' ' + owner.name + ' ' + owner.patronymic}">Иванов Иван Иванович</td>
-        <td th:text="${owner.city}">Москва</td>
-        <td th:text="${owner.phone}">+7 900 000-00-00</td>
-    </tr></tbody>
-</table>
+<main class="card">
+    <header class="page-header">
+        <div><p class="eyebrow">Справочник</p><h1>Владельцы телефонов</h1></div>
+        <a class="button" th:href="@{/owners/new}">Добавить владельца</a>
+    </header>
+    <p class="empty" th:if="${!owners.iterator().hasNext()}">Записей пока нет. Добавьте первого владельца.</p>
+    <div class="table-wrap" th:if="${owners.iterator().hasNext()}">
+        <table>
+            <thead><tr><th>ID</th><th>ФИО</th><th>Город</th><th>Телефон</th><th></th></tr></thead>
+            <tbody>
+            <tr th:each="owner : ${owners}">
+                <td th:text="${owner.id}">1</td>
+                <td th:text="${owner.surname + ' ' + owner.name + ' ' + owner.patronymic}">Иванов Иван Иванович</td>
+                <td th:text="${owner.city}">Москва</td>
+                <td th:text="${owner.phone}">+7 900 000-00-00</td>
+                <td><a th:href="@{/owners/{id}(id=${owner.id})}">Подробнее</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
 </body>
 </html>
