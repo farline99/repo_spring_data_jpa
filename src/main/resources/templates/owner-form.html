@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Новый владелец</title></head>
+<body>
+<h1>Добавить владельца телефона</h1>
+<form th:action="@{/owners}" th:object="${owner}" method="post">
+    <label>Фамилия<input th:field="*{surname}" required></label>
+    <label>Имя<input th:field="*{name}" required></label>
+    <label>Отчество<input th:field="*{patronymic}" required></label>
+    <label>Телефон<input type="tel" th:field="*{phone}" required></label>
+    <label>Почтовый индекс<input th:field="*{postalCode}" required></label>
+    <label>Страна<input th:field="*{country}" required></label>
+    <label>Область<input th:field="*{region}" required></label>
+    <label>Район<input th:field="*{district}" required></label>
+    <label>Город<input th:field="*{city}" required></label>
+    <label>Улица<input th:field="*{street}" required></label>
+    <label>Дом<input th:field="*{house}" required></label>
+    <label>Квартира<input th:field="*{apartment}" required></label>
+    <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>

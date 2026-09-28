@@ -3,6 +3,7 @@
 <head><meta charset="UTF-8"><title>Владельцы телефонов</title></head>
 <body>
 <h1>Владельцы телефонов</h1>
+<a th:href="@{/owners/new}">Добавить владельца</a>
 <p th:if="${!owners.iterator().hasNext()}">Записей пока нет.</p>
 <table th:if="${owners.iterator().hasNext()}">
     <thead><tr><th>ID</th><th>ФИО</th><th>Город</th><th>Телефон</th></tr></thead>
