@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Владелец телефона</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${owner.id == null ? 'Новый владелец' : 'Редактирование владельца'}">Владелец</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
 <body>
-<h1 th:text="${owner.id == null ? 'Новый владелец' : 'Редактирование владельца'}">Владелец</h1>
-<form th:action="${owner.id == null} ? @{/owners} : @{/owners/{id}(id=${owner.id})}" th:object="${owner}" method="post">
-    <label>Фамилия<input th:field="*{surname}" required></label>
-    <label>Имя<input th:field="*{name}" required></label>
-    <label>Отчество<input th:field="*{patronymic}" required></label>
-    <label>Телефон<input type="tel" th:field="*{phone}" required></label>
-    <label>Почтовый индекс<input th:field="*{postalCode}" required></label>
-    <label>Страна<input th:field="*{country}" required></label>
-    <label>Область<input th:field="*{region}" required></label>
-    <label>Район<input th:field="*{district}" required></label>
-    <label>Город<input th:field="*{city}" required></label>
-    <label>Улица<input th:field="*{street}" required></label>
-    <label>Дом<input th:field="*{house}" required></label>
-    <label>Квартира<input th:field="*{apartment}" required></label>
-    <button type="submit">Сохранить</button>
-</form>
+<main class="card form-card">
+    <p class="eyebrow">Справочник</p>
+    <h1 th:text="${owner.id == null ? 'Новый владелец' : 'Редактирование владельца'}">Владелец</h1>
+    <form th:action="${owner.id == null} ? @{/owners} : @{/owners/{id}(id=${owner.id})}" th:object="${owner}" method="post">
+        <h2>Личные данные</h2>
+        <div class="grid">
+            <label>Фамилия<input type="text" th:field="*{surname}" required></label>
+            <label>Имя<input type="text" th:field="*{name}" required></label>
+            <label>Отчество<input type="text" th:field="*{patronymic}" required></label>
+            <label>Номер телефона<input type="tel" th:field="*{phone}" required></label>
+        </div>
+        <h2>Домашний адрес</h2>
+        <div class="grid">
+            <label>Почтовый индекс<input type="text" th:field="*{postalCode}" required></label>
+            <label>Страна<input type="text" th:field="*{country}" required></label>
+            <label>Область<input type="text" th:field="*{region}" required></label>
+            <label>Район<input type="text" th:field="*{district}" required></label>
+            <label>Город<input type="text" th:field="*{city}" required></label>
+            <label>Улица<input type="text" th:field="*{street}" required></label>
+            <label>Дом<input type="text" th:field="*{house}" required></label>
+            <label>Квартира<input type="text" th:field="*{apartment}" required></label>
+        </div>
+        <div class="actions">
+            <button type="submit">Сохранить</button>
+            <a class="text-link" th:href="@{/owners}">Отмена</a>
+        </div>
+    </form>
+</main>
 </body>
 </html>
